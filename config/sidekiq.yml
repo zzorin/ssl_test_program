@@ -1,0 +1,4 @@
+:schedule:
+  SslCheckWorker:
+    cron: '*/20 * * * *'
+    class: SslCheckWorker

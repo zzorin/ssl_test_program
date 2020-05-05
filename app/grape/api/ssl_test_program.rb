@@ -10,8 +10,7 @@ module API
 
     post :domain do
       domain_name = params[:domain_name]
-      uri = URI::HTTPS.build(host: domain_name)
-      domain = Domain.new(name: uri.host)
+      domain = Domain.new(name: domain_name)
       if domain.save
         SslChecker.new(domain).check
       else

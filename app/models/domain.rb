@@ -3,14 +3,14 @@ class Domain < ApplicationRecord
 
   include AASM
 
-  aasm column: :state, whiny: false do
+  aasm column: :state, whiny_transitions: false do
     state :broken, initial: true
     state :working
 
-    event :two_weeks do
+    event :two_weeks_to_expired do
       transitions from: :working, to: :broken, guard: :working?
     end
-    event :one_week do
+    event :one_week_to_expired do
       transitions from: :working, to: :broken, guard: :working?
     end
     event :set_expired do
@@ -19,7 +19,7 @@ class Domain < ApplicationRecord
     event :set_ssl_error do
       transitions from: :working, to: :broken, guard: :working?
     end
-    event :set_connection_error do
+    event :set_another_error do
       transitions from: :working, to: :broken, guard: :working?
     end
     event :set_working do

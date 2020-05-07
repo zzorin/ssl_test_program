@@ -17,9 +17,3 @@ test:
 
 production:
   <<: *default
-# 
-# development:
-#   adapter: postgresql
-#   database: ssl_test_program_development
-#   username: zzorin
-#   password: 111093
